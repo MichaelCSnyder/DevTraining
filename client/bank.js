@@ -3,15 +3,15 @@ function BankViewModel() {
 
 	self.CurrentView = ko.observable('viewLogin');
 
+	// login form observables
 	self.AccountHolderName = ko.observable('');
 	self.Email = ko.observable('');
 	self.AccountType = ko.observable('checking');
 	self.InitialDeposit = ko.observable(0);
 
-	self.Message = ko.observable('');
-
 	self.AccountId = ko.observable('');
 	self.Balance = ko.observable('');
+	self.Message = ko.observable('');
 
 	self.DepositAmount = ko.observable(0);
 	self.WithdrawAmount = ko.observable(0);
@@ -24,44 +24,41 @@ function BankViewModel() {
 			return self.Message('Please enter your email');
 		}
 
-		try {
-			const response = await fetch('/accounts', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					accountHolderName: self.AccountHolderName(),
-					email: self.Email(),
-					accountType: 'checking',
-					initialDeposit: 100
-				})
-			});
+		const response = await fetch('/accounts', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				accountHolderName: self.AccountHolderName(),
+				email: self.Email(),
+				accountType: 'checking',
+				initialDeposit: 100
+			})
+		});
 
-			const result = await response.json();
+		const result = await response.json();
 
-			console.log(result)
-			if (response.ok) {
-				self.Message('Account created successfully!');
-				setTimeout(() => {
-					self.Message('');
-				}, 3000);
+		if (response.ok) {
+			self.Message('Account created successfully!');
+			setTimeout(() => {
+				self.Message('');
+			}, 3000);
 
-				self.AccountId(result.account.id);
-				self.Balance(result.account.balance);
+			self.AccountId(result.account.id);
+			self.Balance(result.account.balance);
 
-				self.CurrentView('viewAccount');
-			} else {
-				self.Message('Error: ' + result.error);
-			}
-		} catch (error) {
-			self.Message('Network error: ' + error.message);
+			self.CurrentView('viewAccount');
+		} else {
+			self.Message('Error: ' + result.error);
 		}
 	};
 
 	self.OnClickDepositMoney = async function() {
+		// implement this
 		console.log('depositing money');
 	}
 
 	self.OnClickWithdrawMoney = async function() {
+		// implement this
 		console.log('withdrawing money');
 	}
 }

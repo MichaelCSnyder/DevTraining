@@ -32,24 +32,17 @@ app.post('/accounts', (req, res) => {
 })
 
 app.post('/accounts/:id/deposit', async (req, res) => {
-	try {
-		const { amount } = req.body;
+	const { amount } = req.body;
 
-		const accountId = req.params.id;
+	const accountId = req.params.id;
 
-		const account = accountApplicationService.depositMoney({ accountId, amount });
+	const account = accountApplicationService.depositMoney({ accountId, amount });
 
-		res.json({
-			message: 'Deposit successful',
-			newBalance: account.balance,
-			depositAmount: amount
-		});
-	} catch (error) {
-		if (error.message === 'Account not found') {
-			return res.status(404).json({ error: error.message });
-		}
-		res.status(400).json({ error: error.message });
-	}
+	res.json({
+		message: 'Deposit successful',
+		newBalance: account.balance,
+		depositAmount: amount
+	});
 });
 
 app.use(express.static('client'));
