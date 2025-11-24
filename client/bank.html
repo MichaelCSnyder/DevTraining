@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bank Demo</title>
+	<script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
+</head>
+<body>
+	<div data-bind="if: CurrentView() === 'viewLogin'">
+		<h2>Create Account</h2>
+
+		<form data-bind="submit: $root.OnClickCreateAccount">
+			<p>
+				<label>Name:</label><br>
+				<input type="text" data-bind="value: AccountHolderName" placeholder="Your Full Name" required />
+			</p>
+
+			<p>
+				<label>Email:</label><br>
+				<input type="email" data-bind="value: Email" placeholder="your@email.com" required />
+			</p>
+
+			<p>
+				<label>Account Type:</label><br>
+				<select data-bind="value: AccountType">
+					<option value="checking">Checking</option>
+					<option value="savings">Savings</option>
+				</select>
+			</p>
+
+			<p>
+				<label>Initial Deposit:</label><br>
+				<input type="number" data-bind="value: InitialDeposit" placeholder="0" min="0" step="0.01" />
+			</p>
+
+			<button type="submit">Create Account</button>
+		</form>
+
+		<p data-bind="text: Message"></p>
+	</div>
+	<div data-bind="if: CurrentView() === 'viewAccount'">
+		<h3>Account Created!</h3>
+		<p>Account ID: <span data-bind="text: AccountId"></span></p>
+		<p>Name: <span data-bind="text: AccountHolderName"></span></p>
+		<p>Email: <span data-bind="text: Email"></span></p>
+		<p>Type: <span data-bind="text: AccountType"></span></p>
+
+		<hr>
+
+		<h2 style="text-align: center">Balance: $<span data-bind="text: InitialDeposit"></span></h2>
+
+		<hr>
+
+		<h4>Deposit Money</h4>
+		<select data-bind="value: DepositAmount">
+			<option value="10">$10</option>
+			<option value="25">$25</option>
+			<option value="50">$50</option>
+		</select>
+		<button data-bind="click: OnClickDepositMoney">Deposit</button>
+
+		<h4>Withdraw Money</h4>
+		<select data-bind="value: WithdrawAmount">
+			<option value="10">$10</option>
+			<option value="25">$25</option>
+			<option value="50">$50</option>
+		</select>
+		<button data-bind="click: OnClickWithdrawMoney">Withdraw</button>
+	</div>
+
+	<p data-bind="text: Message"></p>
+	<script src="bank.js"></script>
+</body>
+</html>
