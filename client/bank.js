@@ -3,7 +3,6 @@ function BankViewModel() {
 
 	self.CurrentView = ko.observable('viewLogin');
 
-	// login form observables
 	self.AccountHolderName = ko.observable('');
 	self.Email = ko.observable('');
 	self.AccountType = ko.observable('checking');
