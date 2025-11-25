@@ -6,8 +6,5 @@ export default class MoneyDeposited {
 		this.accountId = params.accountId;
 
 		this.amount = params.amount;
-		this.depositMethod = params.depositMethod; // 'cash', 'check', 'transfer', 'direct_deposit'
-		this.reference = params.reference;
-		this.depositedBy = params.depositedBy;
 	}
 }
