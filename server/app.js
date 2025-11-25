@@ -42,13 +42,35 @@ app.post('/accounts/:id/deposit', async (req, res) => {
 
 	const accountId = req.params.id;
 
-	const account = accountApplicationService.depositMoney({ accountId, amount });
+	try {
+		const account = accountApplicationService.depositMoney({ accountId, amount });
 
-	res.json({
-		message: 'Deposit successful',
-		newBalance: account.balance,
-		depositAmount: amount
-	});
+		res.json({
+			message: 'Deposit successful',
+			newBalance: account.balance,
+			depositAmount: amount
+		});
+	} catch (error) {
+		return res.status(500).json({ error: error.message });
+	}
+});
+
+app.post('/accounts/:id/withdraw', async (req, res) => {
+	const { amount } = req.body;
+
+	const accountId = req.params.id;
+
+	try {
+		const account = accountApplicationService.withdrawMoney({ accountId, amount });
+
+		res.json({
+			message: 'Withdrawal successful',
+			newBalance: account.balance,
+			depositAmount: amount
+		});
+	} catch (error) {
+		return res.status(500).json({ error: error.message });
+	}
 });
 
 app.use(express.static('client'));
