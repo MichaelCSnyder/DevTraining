@@ -1,7 +1,5 @@
 import {
 	AccountOpened,
-	MoneyDeposited,
-	MoneyWithdrawn,
 	OverdraftOccurred,
 } from '../events/index.js';
 
@@ -76,18 +74,6 @@ export default class Account {
 				this.#applyAccountOpened({ event });
 				break;
 			}
-			case (MoneyDeposited.name): {
-				this.#applyMoneyDeposited({ event });
-				break;
-			}
-			case (MoneyWithdrawn.name): {
-				this.#applyMoneyWithdrawn({ event });
-				break;
-			}
-			case (OverdraftOccurred.name): {
-				this.#appplyOverdraftOccurred({ event });
-				break;
-			}
 			default: {
 				console.log(`Ignoring event: ${JSON.stringify(event)}`)
 			}
@@ -102,17 +88,5 @@ export default class Account {
 		this.#createdAt = event.time;
 		this.#accountType = event.accountType;
 		this.#accountHolderName = event.accountHolderName;
-	}
-
-	#applyMoneyDeposited({ event }) {
-
-	}
-
-	#applyMoneyWithdrawn({ event }) {
-
-	}
-
-	#appplyOverdraftOccurred({ event }) {
-
 	}
 }
