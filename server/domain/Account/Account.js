@@ -48,24 +48,11 @@ export default class Account {
 	}
 
 	debit(amount) {
-		if (amount <= 0) {
-			throw new Error('Debit amount must be positive');
-		}
-		if (this.#balance < amount) {
-			throw new Error('Insufficient funds');
-		}
-		this.#balance -= amount;
+
 	}
 
 	credit(amount) {
-		if (amount <= 0) {
-			throw new Error('Credit amount must be positive');
-		}
-		this.#balance += amount;
-	}
 
-	isActive() {
-		return this.#balance >= 0;
 	}
 
 	#applyEvent(event) {
