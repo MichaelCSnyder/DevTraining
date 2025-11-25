@@ -54,5 +54,5 @@ app.post('/accounts/:id/deposit', async (req, res) => {
 app.use(express.static('client'));
 
 app.listen(port, () => {
-	console.log(`Server running at http://localhost:${port}`);
+	console.log(`Server running at http://localhost:${port}. HTML served at http://localhost:${port}/bank.html`);
 })
