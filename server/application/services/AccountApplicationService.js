@@ -6,22 +6,18 @@ import { AccountOpened } from "../../domain/events/index.js";
 
 const accountRepo = new AccountRepo();
 
-const AccountType = {
-	CHECKING: 'checking',
-}
-
 export default class AccountApplicationService {
 	constructor() {
 
 	}
 
 	openAccount(params = {}) {
-		const { accountHolderName, email, initialDeposit } = params;
+		const { accountHolderName, email, initialDeposit, accountType } = params;
 
 		const event = new AccountOpened({
 			accountId: randomUUID(),
 			accountHolderName,
-			accountType: AccountType.CHECKING,
+			accountType,
 			initialDeposit,
 			email,
 		})

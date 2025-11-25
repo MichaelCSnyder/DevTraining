@@ -17,18 +17,24 @@ app.post('/accounts', (req, res) => {
 		});
 	}
 
-	const account = accountApplicationService.openAccount({ accountHolderName, email, initialDeposit, accountType })
+	let account;
+	try {
+		account = accountApplicationService.openAccount({ accountHolderName, email, initialDeposit, accountType })
 
-	res.status(201).json({
-		message: 'Account created successfully',
-		account: {
-			id: account.id,
-			email: account.email,
-			accountHolderName: account.accountHolderName,
-			accountType: account.accountType,
-			balance: account.balance,
-		}
-	});
+		return res.status(201).json({
+			message: 'Account created successfully',
+			account: {
+				id: account.id,
+				email: account.email,
+				accountHolderName: account.accountHolderName,
+				accountType: account.accountType,
+				balance: account.balance,
+			}
+		});
+	} catch (error) {
+		console.error(error);
+		return res.status(500).json({ error: error.message });
+	}
 })
 
 app.post('/accounts/:id/deposit', async (req, res) => {

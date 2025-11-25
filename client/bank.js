@@ -30,7 +30,7 @@ function BankViewModel() {
 			body: JSON.stringify({
 				accountHolderName: self.AccountHolderName(),
 				email: self.Email(),
-				accountType: 'checking',
+				accountType: self.AccountType(),
 				initialDeposit: 100
 			})
 		});
