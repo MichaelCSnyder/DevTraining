@@ -16,8 +16,8 @@ This pattern is central to many of our workflow implementations, providing both 
 
 The account creation flow is already complete. You will be expected to add the following functionality:
 
-1. Allow users to deposit money to their account
-2. Allow users to withdraw money from their account
+1. Allow users to deposit money to their account and have the balance reflect this
+2. Allow users to withdraw money from their account and have the balance reflect this
 
 <img width="935" height="393" alt="image" src="https://github.com/user-attachments/assets/ae911a8e-734c-454b-a8a8-4ce27333619d" />
 
