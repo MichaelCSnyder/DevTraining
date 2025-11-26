@@ -12,7 +12,7 @@ This project is a simple banking application meant to provide exposure to event 
 This pattern is central to many of our workflow implementations, providing both an audit trail and a mechanism for state reconstruction.
 
 ---
-### Your Task
+## Your Task
 
 The account creation flow is already complete. You will be expected to add the following functionality:
 
