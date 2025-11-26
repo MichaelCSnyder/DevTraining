@@ -20,3 +20,9 @@ The account creation flow is already complete. You will be expected to add the f
 2. Allow users to withdraw money from their account
 
 Orient youself with the initial implementation and follow the existing patterns to flesh out the above functionality.
+
+## Getting Started
+1. clone the repo locally to your machine
+2. run `npm install`
+3. start the express server by running `npm start`
+4. visit `http://localhost:3000/bank.html`
