@@ -1,7 +1,7 @@
 # Developer Training Module
 
 ## Welcome to SMART-Bank!
-### The (simplified) Online Banking App
+The (simplified) Online Banking App
 
 This project is a simple banking application meant to provide exposure to event sourcing. Event sourcing is a pattern where we store all changes to application state as a sequence of events. 
 
@@ -10,6 +10,7 @@ This project is a simple banking application meant to provide exposure to event 
 - Events are immutable and represent the history of the domain
 
 This pattern is central to many of our workflow implementations, providing both an audit trail and a mechanism for state reconstruction.
+
 ---
 ### Your Task
 
