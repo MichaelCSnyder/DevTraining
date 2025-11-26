@@ -19,6 +19,8 @@ The account creation flow is already complete. You will be expected to add the f
 1. Allow users to deposit money to their account
 2. Allow users to withdraw money from their account
 
+<img width="935" height="393" alt="image" src="https://github.com/user-attachments/assets/ae911a8e-734c-454b-a8a8-4ce27333619d" />
+
 Orient youself with the initial implementation and follow the existing patterns to flesh out the above functionality.
 
 ## Getting Started
