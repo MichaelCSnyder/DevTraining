@@ -30,7 +30,7 @@ function BankViewModel() {
 				accountHolderName: self.AccountHolderName(),
 				email: self.Email(),
 				accountType: self.AccountType(),
-				initialDeposit: 100
+				initialDeposit: Number(self.InitialDeposit()),
 			})
 		});
 

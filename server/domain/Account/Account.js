@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import {
 	AccountOpened,
 	OverdraftOccurred,
@@ -15,16 +17,17 @@ export default class Account {
 	constructor(ctorParams = {}) {
 		const { events } = ctorParams;
 
-		this.#id = ctorParams.id;
-		this.#accountHolderName = ctorParams.accountHolderName;
-		this.#email = ctorParams.email;
+		this.#events = events;
 
-		events.forEach((event) => this.#applyEvent(event))
-		this.#events = events.filter((event) => !event.id)
+		events.forEach((event) => this.#applyEvent(event));
 	}
 
 	get events() {
 		return this.#events;
+	}
+
+	get newEvents() {
+		return this.events.filter((event) => !event.id)
 	}
 
 	get id() {

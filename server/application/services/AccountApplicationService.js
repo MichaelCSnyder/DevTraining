@@ -28,7 +28,7 @@ export default class AccountApplicationService {
 		return account;
 	}
 
-	depositMoney() {
+	depositMoney(params = {}) {
 
 	}
 

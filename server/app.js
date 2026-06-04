@@ -77,4 +77,4 @@ app.use(express.static('client'));
 
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}. HTML served at http://localhost:${port}/bank.html`);
-})
+});

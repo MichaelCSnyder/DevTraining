@@ -12,12 +12,12 @@ export default class AccountRepo {
 	}
 
 	upsert(account) {
-		const events = account.events;
+		const newEvents = account.newEvents;
 
 		const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')).sort((a, b) => a.time - b.time);
 
 		let latestEventId = data.at(-1)?.id ?? 0;;
-		data.push(...events.map(event => {
+		data.push(...newEvents.map(event => {
 			return {
 				...event,
 				id: latestEventId += 1,
