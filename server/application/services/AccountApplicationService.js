@@ -25,7 +25,13 @@ export default class AccountApplicationService {
 		const account = new Account({ events: [event] });
 		accountRepo.upsert(account);
 
-		return account;
+		return {
+			id: account.id,
+			email: account.email,
+			accountHolderName: account.accountHolderName,
+			accountType: account.accountType,
+			balance: account.balance,
+		};
 	}
 
 	depositMoney(params = {}) {

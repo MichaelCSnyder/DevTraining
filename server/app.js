@@ -17,56 +17,42 @@ app.post('/accounts', (req, res) => {
 		});
 	}
 
-	let account;
 	try {
-		account = accountApplicationService.openAccount({ accountHolderName, email, initialDeposit, accountType })
+		const response = accountApplicationService.openAccount({ accountHolderName, email, initialDeposit, accountType })
 
 		return res.status(201).json({
 			message: 'Account created successfully',
-			account: {
-				id: account.id,
-				email: account.email,
-				accountHolderName: account.accountHolderName,
-				accountType: account.accountType,
-				balance: account.balance,
-			}
+			response,
 		});
 	} catch (error) {
-		console.error(error);
 		return res.status(500).json({ error: error.message });
 	}
 })
 
-app.post('/accounts/:id/deposit', async (req, res) => {
-	const { amount } = req.body;
-
-	const accountId = req.params.id;
+app.post('/accounts/deposit', async (req, res) => {
+	const { amount, accountId } = req.body;
 
 	try {
-		const account = accountApplicationService.depositMoney({ accountId, amount });
+		const response = accountApplicationService.depositMoney({ accountId, amount });
 
 		res.json({
 			message: 'Deposit successful',
-			newBalance: account.balance,
-			depositAmount: amount
+			response,
 		});
 	} catch (error) {
 		return res.status(500).json({ error: error.message });
 	}
 });
 
-app.post('/accounts/:id/withdraw', async (req, res) => {
-	const { amount } = req.body;
-
-	const accountId = req.params.id;
+app.post('/accounts/withdraw', async (req, res) => {
+	const { amount, accountId } = req.body;
 
 	try {
-		const account = accountApplicationService.withdrawMoney({ accountId, amount });
+		const response = accountApplicationService.withdrawMoney({ accountId, amount });
 
 		res.json({
 			message: 'Withdrawal successful',
-			newBalance: account.balance,
-			depositAmount: amount
+			response,
 		});
 	} catch (error) {
 		return res.status(500).json({ error: error.message });
