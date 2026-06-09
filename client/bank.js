@@ -49,7 +49,6 @@ function BankViewModel() {
 	};
 
 	self.OnClickDepositMoney = async function() {
-		// finish implementing this
 		return self.SendRequest.deferred({
 			path: '/accounts/deposit',
 			method: 'POST',
@@ -58,13 +57,21 @@ function BankViewModel() {
 				amount: Number(self.DepositAmount()),
 			}
 		}).then((response) => {
-			console.log({ response });
+			self.Balance(response.accountBalance);
 		}).catch((ignore) => { })
 	}
 
 	self.OnClickWithdrawMoney = async function() {
-		// finish implementing this
-		const withdrawalAmount = Number(self.WithdrawAmount());
+		return self.SendRequest.deferred({
+			path: '/accounts/withdraw',
+			method: 'POST',
+			data: {
+				accountId: self.AccountId(),
+				amount: Number(self.WithdrawAmount()),
+			}
+		}).then((response) => {
+			self.Balance(response.accountBalance);
+		}).catch((ignore) => { })
 	}
 
 
