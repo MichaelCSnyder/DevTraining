@@ -50,11 +50,11 @@ export default class Account {
 		return this.#balance;
 	}
 
-	debit(amount) {
+	deposit(amount) {
 
 	}
 
-	credit(amount) {
+	withdraw(amount) {
 
 	}
 
